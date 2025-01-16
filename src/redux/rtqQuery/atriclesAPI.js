@@ -6,7 +6,7 @@ export const articleApi = createApi({
   reducerPath: "articleApi",
   baseQuery: fetchBaseQuery({
     // baseUrl: 'https://65a98bd7219bfa37186970af.mockapi.io/'
-    baseUrl: 'http://localhost:3001/api/'
+    baseUrl: process.env.REACT_APP_API_URL
   }),
   endpoints: builder => ({
     getArticles: builder.query({

@@ -3,7 +3,7 @@ import { api, clearToken, setToken } from "../../configAxios/api";
 
 export const registerThunk = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
   try {
-    const response = await api.post('users/signup', credentials)
+    const response = await api.post('auth/signup', credentials)
     setToken(response.data.token)
     return response.data
   } catch (error) {
@@ -13,7 +13,7 @@ export const registerThunk = createAsyncThunk('auth/register', async (credential
 
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
   try {
-    const response = await api.post('users/login', credentials)
+    const response = await api.post('auth/login', credentials)
     setToken(response.data.token)
     return response.data
   } catch (error) {
@@ -38,7 +38,7 @@ export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi)
     return thunkApi.rejectWithValue('Token is not exist')
   }
   try {
-    const response = await api.get('users/current')
+    const response = await api.get('auth/current')
     return response.data
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)

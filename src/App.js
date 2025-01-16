@@ -13,7 +13,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 
 function App() {
-
+  console.log(process.env.REACT_APP_API_URL)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(refreshThunk())
@@ -26,7 +26,8 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/articlesRTK' element={<ArticlesRTKQ />} />
+        <Route path='/articles' element={<ArticlesRTKQ />} />
+        {/* <Route path='/articlesRTK' element={<ArticlesRTKQ />} /> */}
         <Route path='/articlesRTK/new' element={<ArticleFormRTKQ />} />
         <Route path='/register' element={
           <PublicRoute>

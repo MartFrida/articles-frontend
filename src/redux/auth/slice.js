@@ -4,7 +4,7 @@ import { loginThunk, logoutThunk, refreshThunk, registerThunk } from "./operatio
 const initialState = {
   user: {
     email: '',
-    username: '',
+    name: '',
   },
   token: '',
   isLoggedIn: false,
@@ -20,13 +20,13 @@ const slice = createSlice(
 
     extraReducers: builder => {
       builder.addCase(registerThunk.fulfilled, (state, { payload }) => {
-        state.user.email = payload.user.email
-        state.user.username = payload.user.username
+        state.user.email = payload.email
+        state.user.name = payload.username
         state.token = payload.token
         state.isLoggedIn = true
       })
         .addCase(loginThunk.fulfilled, (state, { payload }) => {
-          state.user = payload.user
+          state.user.email = payload.email
           state.token = payload.token
           state.isLoggedIn = true
         })
@@ -36,7 +36,7 @@ const slice = createSlice(
           state.token = ''
         })
         .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-          state.user.name = payload.name
+          state.user.name = payload.username
           state.user.email = payload.email
           state.isLoggedIn = true
           state.isRefresh = false

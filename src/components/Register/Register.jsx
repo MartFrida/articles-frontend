@@ -11,7 +11,7 @@ const Register = () => {
     dispatch(registerThunk(data))
       .unwrap()
       .then((res) => {
-        toast.success(`Welcome ${res.user.name}`)
+        toast.success(`Welcome ${res.username}`)
       })
       .catch(() => { toast.error('Something went wrong!') })
   }

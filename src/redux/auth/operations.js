@@ -25,7 +25,7 @@ export const registerThunk = createAsyncThunk('auth/register', async (userData, 
 
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
   try {
-    const response = await api.post('auth/login', credentials)
+    const response = await api.post('auth/signin', credentials)
     setToken(response.data.token)
     return response.data
   } catch (error) {
@@ -35,7 +35,7 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
 
 export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
-    await api.post('users/logout')
+    await api.post('auth/signout')
     clearToken()
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)

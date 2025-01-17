@@ -7,10 +7,10 @@ import HomePage from './pages/HomePage/HomePage';
 import PublicRoute from './redux/routesConfig/PublicRoute';
 import { selectIsRefresh } from './redux/selectors';
 import Loader from './components/Loader/Loader';
-import ArticlesRTKQ from './pages/ArticlesRTKQ/ArticlesRTKQ'
-import ArticleFormRTKQ from './pages/ArticlesRTKQ/ArticleFormRTKQ'
-import Register from './components/Register/Register';
-import Login from './components/Login/Login';
+import { Articles } from './pages/Articles/Articles.jsx'
+import Register from './components/Register/Register.jsx';
+import { NotFound } from './pages/NotFound/NotFound.jsx'
+import Login from './components/Login/Login.jsx';
 
 function App() {
   console.log(process.env.REACT_APP_API_URL)
@@ -26,9 +26,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/articles' element={<ArticlesRTKQ />} />
-        {/* <Route path='/articlesRTK' element={<ArticlesRTKQ />} /> */}
-        <Route path='/articlesRTK/new' element={<ArticleFormRTKQ />} />
+        <Route path='/articles' element={<Articles />} />
         <Route path='/register' element={
           <PublicRoute>
             <Register />
@@ -39,7 +37,7 @@ function App() {
             <Login />
           </PublicRoute>
         } />
-        <Route path='*' element={<h2>Page not found</h2>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   );

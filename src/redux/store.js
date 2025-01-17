@@ -12,14 +12,14 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { articleApi } from "./rtqQuery/atriclesAPI";
-import { setupListeners } from "@reduxjs/toolkit/query";
+// import { articleApi } from "./rtqQuery/atriclesAPI";
+// import { setupListeners } from "@reduxjs/toolkit/query";
 
 const persistConfig = {
   key: 'auth',
   version: 1,
   storage,
-  whitelist: 'token',
+  whitelist: ['token'],
 }
 
 const persistedReducer = persistReducer(persistConfig, authReducer)
@@ -27,7 +27,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer)
 const rootReducer = combineReducers({
   articles: articleReducer,
   auth: persistedReducer,
-  [articleApi.reducerPath]: articleApi.reducer,
+  // [articleApi.reducerPath]: articleApi.reducer,
 })
 
 export const store = configureStore({
@@ -37,9 +37,8 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(articleApi.middleware),
+    }),
   devTools: process.env.NODE_ENV !== 'production'
 })
 
 export const persistor = persistStore(store)
-setupListeners(store.dispatch)

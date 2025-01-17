@@ -13,7 +13,6 @@ import { NotFound } from './pages/NotFound/NotFound.jsx'
 import Login from './components/Login/Login.jsx';
 
 function App() {
-  console.log(process.env.REACT_APP_API_URL)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(refreshThunk())

@@ -21,7 +21,7 @@ const Register = () => {
       <form onSubmit={handleSubmit(submit)} className='w-full  md:w-[400px] bg-white grid gap-4 shadow-lg border border-gray-300 rounded-md px-6 py-12 '>
         <label className='flex flex-col gap-2'>
           <span>Name</span>
-          <input {...register('name')} placeholder='Enter the name' className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ' type='text' />
+          <input {...register('username')} placeholder='Enter the name' className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ' type='text' />
         </label>
         <label className='flex flex-col gap-2'>
           <span>Email</span>

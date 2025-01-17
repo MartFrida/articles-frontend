@@ -1,15 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api, clearToken, setToken } from "../../configAxios/api";
 
-export const registerThunk = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
+export const registerThunk = createAsyncThunk('auth/register', async (userData, { rejectWithValue }) => {
   try {
-    const response = await api.post('auth/signup', credentials)
+    console.log(userData)
+    const response = await api.post(
+      "auth/signup",
+      userData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     setToken(response.data.token)
-    return response.data
+    console.log(response.data)
+    return response.data;
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message)
+    console.error("Signup error:", error.response?.data || error.message);
+    return rejectWithValue(error.response?.data || error.message);
   }
-})
+}
+);
 
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
   try {

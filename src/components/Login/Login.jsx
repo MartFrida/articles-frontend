@@ -8,8 +8,8 @@ import { toast } from 'react-toastify'
 const Login = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      email: 'marisata1@email.com',
-      password: 'marisata@email.com',
+      "email": 'marisata1@email.com',
+      "password": 'marisata1@email.com',
     }
   })
   const dispatch = useDispatch()

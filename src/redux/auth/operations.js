@@ -23,13 +23,20 @@ export const registerThunk = createAsyncThunk('auth/register', async (userData, 
 }
 );
 
-export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
+export const loginThunk = createAsyncThunk('auth/login', async (userData, { rejectWithValue }) => {
   try {
-    const response = await api.post('auth/signin', credentials)
+    console.log(userData)
+    const response = await api.post('auth/signin', userData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+    console.log(response)
     setToken(response.data.token)
     return response.data
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message)
+    return rejectWithValue(error.message)
   }
 })
 

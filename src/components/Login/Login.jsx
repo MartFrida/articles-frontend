@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { loginThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
 
-
 const Login = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -18,7 +17,7 @@ const Login = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then((res) => {
-        toast.success(`Welcome ${res.user.name}`)
+        toast.success(`Welcome ${res.username}`)
       })
       .catch(() => { toast.error('Something went wrong!') })
   }

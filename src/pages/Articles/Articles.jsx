@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { ArticleItem } from './ArticleItem'
+import { ArticleItem } from '../../components/ArticleItem/ArticleItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectArticles } from '../../redux/selectors'
+import { selectArticles, selectIsLoadingArticles } from '../../redux/selectors'
 import { fetchData } from '../../redux/articles/operations'
-// import { loginThunk } from '../../redux/auth/slice'
+import Loader from '../../components/Loader/Loader'
 
 export const Articles = () => {
+	const isLoading = useSelector(selectIsLoadingArticles)
 	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(fetchData())
@@ -16,7 +17,6 @@ export const Articles = () => {
 		<>
 			<div>
 				<input value={value} onChange={e => setValue(e.target.value)} type='text' />
-				{/* <button onClick={() => dispatch(loginThunk(value))}>Login</button> */}
 			</div>
 			<ul>
 				{articles?.map(article => (
@@ -25,6 +25,7 @@ export const Articles = () => {
 					</li>
 				))}
 			</ul>
+			{isLoading && <Loader />}
 		</>
 	)
 }

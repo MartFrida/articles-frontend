@@ -1,6 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, isAnyOf } from "@reduxjs/toolkit"
 import { addArticleThunk, deleteArticleThunk, fetchData } from "./operations"
-import { logoutThunk } from "../auth/operations"
 
 const initialState = {
   items: [],
@@ -27,8 +26,16 @@ const slice = createSlice({
       .addCase(deleteArticleThunk.fulfilled, (state, { payload }) => {
         state.items = state.items.filter(item => item.id !== payload)
       })
-      .addCase(logoutThunk.fulfilled, state => {
-        state.items = []
+      .addMatcher(isAnyOf(fetchData.fulfilled, addArticleThunk.fulfilled, deleteArticleThunk.fulfilled), state => {
+        state.loading = false
+      })
+      .addMatcher(isAnyOf(fetchData.pending, addArticleThunk.pending, deleteArticleThunk.pending), state => {
+        state.loading = true
+        state.error = false
+      })
+      .addMatcher(isAnyOf(fetchData.rejected, addArticleThunk.rejected, deleteArticleThunk.rejected), (state, { payload }) => {
+        state.loading = false
+        state.error = payload
       })
   }
 })

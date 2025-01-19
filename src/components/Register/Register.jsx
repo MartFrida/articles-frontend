@@ -1,11 +1,14 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { registerThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
+import { selectIsLoadingArticles } from '../../redux/selectors'
+import Loader from '../Loader/Loader'
 
 const Register = () => {
   const { register, handleSubmit } = useForm()
+  const isLoading = useSelector(selectIsLoadingArticles)
   const dispatch = useDispatch()
   const submit = data => {
     dispatch(registerThunk(data))
@@ -33,6 +36,7 @@ const Register = () => {
         </label>
         <button className='shadow-lg w-full rounded border-2 bg-white px-3 py-3 text-base font-bold text-gray-900 transition duration-100 hover:shadow-gray-300 mt-2' >Register</button>
       </form>
+      {isLoading && <Loader />}
     </div>
   )
 }

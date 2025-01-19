@@ -13,7 +13,7 @@ const Loader = () => {
         wrapperStyle={{}}
         wrapperClass=""
       />
-      <h2 className='text-white text-center font-bold text-3xl '>Auth in progress...</h2>
+      <h2 className='text-white text-center font-bold text-3xl '>In progress...</h2>
     </div>
   )
 }

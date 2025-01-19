@@ -16,9 +16,8 @@ const Header = () => {
       <NavLink to='/' className='hover:text-light-purple duration-300 mr-4'>
         {userName || 'logo'}
       </NavLink>
-
       <div className='flex justify-around gap-x-4 md:gap-x-12 lg:gap-x-20 uppercase'>
-        {isLoggedIn && <NavLink to='/articlesRTK/new' className='hover:text-light-purple duration-300  text-center'>Write article</NavLink>
+        {isLoggedIn && <NavLink to='/articles/new' className='hover:text-light-purple duration-300  text-center'>Write article</NavLink>
         }
         <NavLink to='/articles' className='hover:text-light-purple duration-300 text-center'>All Articles</NavLink>
       </div>

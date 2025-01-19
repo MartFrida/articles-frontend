@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshThunk } from './redux/auth/operations';
 import { useEffect } from 'react';
 import HomePage from './pages/HomePage/HomePage';
-import PublicRoute from './redux/routesConfig/PublicRoute';
+import PublicRoute from './redux/routesConfig/PublicRoute.jsx';
+import PrivateRoute from './redux/routesConfig/PrivateRoute.jsx';
 import { selectIsRefresh } from './redux/selectors';
 import Loader from './components/Loader/Loader';
 import { Articles } from './pages/Articles/Articles.jsx'
 import Register from './components/Register/Register.jsx';
 import { NotFound } from './pages/NotFound/NotFound.jsx'
 import Login from './components/Login/Login.jsx';
+import { NewArticle } from './pages/NewArticle/NewArticle.jsx'
 
 function App() {
   const dispatch = useDispatch()
@@ -36,6 +38,14 @@ function App() {
             <Login />
           </PublicRoute>
         } />
+        <Route
+          path='/articles/new'
+          element={
+            <PrivateRoute>
+              <NewArticle />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

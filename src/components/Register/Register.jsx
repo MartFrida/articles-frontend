@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
-import { selectIsLoadingArticles } from '../../redux/selectors'
+import { selectIsLoadingAuth } from '../../redux/selectors'
 import Loader from '../Loader/Loader'
 
 const Register = () => {
   const { register, handleSubmit } = useForm()
-  const isLoading = useSelector(selectIsLoadingArticles)
+  const isLoading = useSelector(selectIsLoadingAuth)
   const dispatch = useDispatch()
   const submit = data => {
     dispatch(registerThunk(data))

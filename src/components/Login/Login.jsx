@@ -1,13 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectIsLoadingArticles } from '../../redux/selectors'
+import { selectIsLoadingAuth } from '../../redux/selectors'
 import { loginThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
 import Loader from '../Loader/Loader'
 
 const Login = () => {
-  const isLoading = useSelector(selectIsLoadingArticles)
+  const isLoading = useSelector(selectIsLoadingAuth)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       "email": 'marisata1@email.com',

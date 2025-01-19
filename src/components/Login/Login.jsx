@@ -1,13 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectIsLoadingAuth } from '../../redux/selectors'
+import { useDispatch } from 'react-redux'
 import { loginThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
-import Loader from '../Loader/Loader'
 
 const Login = () => {
-  const isLoading = useSelector(selectIsLoadingAuth)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       "email": 'marisata1@email.com',
@@ -38,7 +35,6 @@ const Login = () => {
         </label>
         <button className='shadow-lg w-full rounded border-2 bg-white px-3 py-3 text-base font-bold text-gray-900 transition duration-100 hover:shadow-gray-300 mt-2' >Login</button>
       </form>
-      {isLoading && <Loader />}
     </div>
   )
 }

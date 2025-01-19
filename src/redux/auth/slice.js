@@ -9,7 +9,7 @@ const initialState = {
   token: '',
   isLoggedIn: false,
   isRefresh: false,
-  isError: false,
+  isError: null,
   isLoading: false,
 }
 
@@ -54,7 +54,7 @@ const slice = createSlice(
         })
         .addMatcher(isAnyOf(loginThunk.pending, registerThunk.pending, logoutThunk.pending), state => {
           state.isLoading = true
-          state.isError = false
+          state.isError = null
         })
         .addMatcher(isAnyOf(loginThunk.rejected, registerThunk.rejected, logoutThunk.rejected), (state, { payload }) => {
           state.isLoading = false

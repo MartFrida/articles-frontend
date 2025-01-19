@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { addArticleThunk } from '../../redux/articles/operations'
+import { fetchData, addArticleThunk } from '../../redux/articles/operations'
 import { selectUserName } from '../../redux/selectors.js'
 
 export const ArticleForm = () => {
@@ -10,8 +10,9 @@ export const ArticleForm = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const user = useSelector(selectUserName)
-	const submit = data => {
+	const submit = (data) => {
 		dispatch(addArticleThunk({ ...data, author: user }))
+		dispatch(fetchData())
 		reset()
 		navigate('/articles')
 	}

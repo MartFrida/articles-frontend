@@ -17,7 +17,7 @@ const HomePage = () => {
             <footer className='text-right text-xl md:text-2xl'>- Ayn Rand</footer>
           </blockquote>
 
-          <NavLink to={isLoggedIn ? '/articlesRTK/new' : '/login'}><button className='transition ease-in-out delay-150 bg-medium-purple rounded-full py-3 px-6 max-w-48 mx-auto text-lg md:text-xl font-medium tracking-wide hover:-translate-y-1 hover:scale-105 hover:bg-medium-purple-hover duration-300'>Write article</button></NavLink>
+          <NavLink to={isLoggedIn ? '/articles/new' : '/login'}><button className='transition ease-in-out delay-150 bg-medium-purple rounded-full py-3 px-6 max-w-48 mx-auto text-lg md:text-xl font-medium tracking-wide hover:-translate-y-1 hover:scale-105 hover:bg-medium-purple-hover duration-300'>Write article</button></NavLink>
         </div>
       </div>
     </div>

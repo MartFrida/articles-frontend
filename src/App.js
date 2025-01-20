@@ -13,6 +13,7 @@ import Register from './components/Register/Register.jsx';
 import { NotFound } from './pages/NotFound/NotFound.jsx'
 import Login from './components/Login/Login.jsx';
 import { NewArticle } from './pages/NewArticle/NewArticle.jsx'
+import { EditArticle } from './pages/EditArticle/EditArticle.jsx'
 
 function App() {
   const dispatch = useDispatch()
@@ -43,6 +44,14 @@ function App() {
           element={
             <PrivateRoute>
               <NewArticle />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/articles/edit'
+          element={
+            <PrivateRoute>
+              <EditArticle />
             </PrivateRoute>
           }
         />

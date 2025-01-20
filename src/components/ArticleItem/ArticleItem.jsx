@@ -3,12 +3,18 @@ import { cutText } from '../../helpers/cutText'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteArticleThunk } from '../../redux/articles/operations'
 import { selectUserName } from '../../redux/selectors'
+import { useNavigate } from 'react-router-dom'
 import { formatDistanceToNow } from 'date-fns'
 
 export const ArticleItem = ({ _id, title, description, author, createdAt }) => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const user = useSelector(selectUserName)
 	const [isCutDescription, setIsCutDescription] = useState(true)
+	const handleEdit = (_id, title, description, author, createdAt) => {
+		console.log(_id, title, description, author, createdAt)
+		navigate('/articles/edit')
+	}
 	return (
 		<div className='w-[90%] mt-2 mx-auto p-4 border-2 border-black rounded-md shadow-md'>
 			<h2 className='text-4xl font-bold'>{title}</h2>
@@ -20,7 +26,7 @@ export const ArticleItem = ({ _id, title, description, author, createdAt }) => {
 			<div className='flex gap-4 py-2 mt-4 justify-end'>
 				{user === author && (
 					<>
-						<button className='border-2 border-black rounded-md px-4 py-1 shadow-md'>edit</button>
+						<button onClick={() => handleEdit(_id, title, description, author, createdAt)} className='border-2 border-black rounded-md px-4 py-1 shadow-md'>edit</button>
 						<button
 							onClick={() => dispatch(deleteArticleThunk(_id))}
 							className='border-2 border-black rounded-md px-4 py-1 shadow-md'

@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit"
-import { addArticleThunk, deleteArticleThunk, fetchData } from "./operations"
+import { addArticleThunk, deleteArticleThunk, fetchData, editArticleThunk } from "./operations"
 
 const initialState = {
   items: [],
@@ -21,8 +21,14 @@ const slice = createSlice({
         state.items = payload
       })
       .addCase(addArticleThunk.fulfilled, (state, { payload }) => {
-
         state.items.push(payload)
+      })
+      .addCase(editArticleThunk.fulfilled, (state, { payload }) => {
+        state.items = state.items.find(item => item._id === payload._id)
+        const index = state.items.findIndex(item => item._id === payload._id);
+        if (index !== -1) {
+          state.items[index] = payload
+        }
       })
       .addCase(deleteArticleThunk.fulfilled, (state, { payload }) => {
         state.items = state.items.filter(item => item._id !== payload)
@@ -42,4 +48,4 @@ const slice = createSlice({
 })
 
 export const articleReducer = slice.reducer
-export const { addArticle } = slice.actions
+// export const { addArticle } = slice.actions

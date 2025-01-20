@@ -20,6 +20,18 @@ export const addArticleThunk = createAsyncThunk('articles/add', async (body, thu
   }
 })
 
+export const editArticleThunk = createAsyncThunk('articles/edit', async ({ _id, updatedData }, thunkApi) => {
+  try {
+    console.log(_id)
+    const { data } = await api.put(`articles/${_id}`, { ...updatedData })
+    return data
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message)
+  }
+})
+
+
+
 export const deleteArticleThunk = createAsyncThunk('article/delete', async (id, thunkApi) => {
   try {
     await api.delete(`articles/${id}`)

@@ -5,7 +5,7 @@ export const fetchData = createAsyncThunk('articles/fetchAll', async (_, thunkAp
   try {
     const { data } = await api.get('articles')
     const { result } = data
-    return result
+    return result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)
   }
@@ -29,8 +29,6 @@ export const editArticleThunk = createAsyncThunk('articles/edit', async ({ _id, 
     return thunkApi.rejectWithValue(error.message)
   }
 })
-
-
 
 export const deleteArticleThunk = createAsyncThunk('article/delete', async (id, thunkApi) => {
   try {

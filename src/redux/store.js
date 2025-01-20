@@ -27,7 +27,6 @@ const persistedReducer = persistReducer(persistConfig, authReducer)
 const rootReducer = combineReducers({
   articles: articleReducer,
   auth: persistedReducer,
-  // [articleApi.reducerPath]: articleApi.reducer,
 })
 
 export const store = configureStore({

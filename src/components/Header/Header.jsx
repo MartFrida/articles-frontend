@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { selectIsLoggedIn, selectUserName } from '../../redux/selectors'
 import { logoutThunk } from '../../redux/auth/operations'
+import { fetchData } from '../../redux/articles/operations'
 
 const Header = () => {
-
   const userName = useSelector(selectUserName)
   const isLoggedIn = useSelector(selectIsLoggedIn)
   const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const Header = () => {
       <div className='flex justify-around gap-x-4 md:gap-x-12 lg:gap-x-20 uppercase'>
         {isLoggedIn && <NavLink to='/articles/new' className='hover:text-light-purple duration-300  text-center'>Write article</NavLink>
         }
-        <NavLink to='/articles' className='hover:text-light-purple duration-300 text-center'>All Articles</NavLink>
+        <NavLink to='/articles' onClick={() => dispatch(fetchData())} className='hover:text-light-purple duration-300 text-center'>All Articles</NavLink>
       </div>
 
       {!isLoggedIn && (<div className='flex gap-x-4 ml-4'>

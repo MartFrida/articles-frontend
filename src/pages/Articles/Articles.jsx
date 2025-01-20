@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ArticleItem } from '../../components/ArticleItem/ArticleItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectArticles, selectIsLoadingArticles, selectIsError } from '../../redux/selectors'
@@ -13,13 +13,9 @@ export const Articles = () => {
 		dispatch(fetchData())
 	}, [dispatch])
 	const articles = useSelector(selectArticles)
-	const [value, setValue] = useState('')
 	return (
-		<>
-			<div className='my-6'>
-				<input value={value} onChange={e => setValue(e.target.value)} type='text' />
-			</div>
-			<ul>
+		<div className='w-full bg-hero-pattern bg-contain bg-repeat py-16 px-4 relative'>
+			<ul >
 				{articles?.map(article => (
 					<li key={article._id}>
 						<ArticleItem {...article} />
@@ -28,6 +24,6 @@ export const Articles = () => {
 			</ul>
 			{isLoading && <Loader />}
 			{isError && <h1>{isError}</h1>}
-		</>
+		</div>
 	)
 }

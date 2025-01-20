@@ -9,7 +9,6 @@ export const EditArticleForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const submit = (data) => {
-    console.log(data)
     dispatch(editArticleThunk({ ...data }))
     reset()
     navigate('/articles')

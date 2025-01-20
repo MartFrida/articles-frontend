@@ -16,7 +16,7 @@ export const Articles = () => {
 	const [value, setValue] = useState('')
 	return (
 		<>
-			<div>
+			<div className='my-6'>
 				<input value={value} onChange={e => setValue(e.target.value)} type='text' />
 			</div>
 			<ul>

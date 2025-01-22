@@ -24,7 +24,7 @@ function App() {
   const isRefresh = useSelector(selectIsRefresh)
 
   return isRefresh ? (<Loader />) : (
-    <div className="App">
+    <div className="App ">
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />

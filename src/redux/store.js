@@ -12,8 +12,6 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-// import { articleApi } from "./rtqQuery/atriclesAPI";
-// import { setupListeners } from "@reduxjs/toolkit/query";
 
 const persistConfig = {
   key: 'auth',

@@ -19,7 +19,6 @@ export const EditArticleForm = () => {
     navigate('/articles')
   }
 
-
   return (
     <div className='flex justify-center items-center h-screen px-4 pt-16  lg:px-8 bg-hero-pattern w-full bg-cover'>
       <form className='w-full lg:w-[70%] bg-white grid gap-4 shadow-lg border border-gray-300 rounded-md px-6 py-12 ' onSubmit={handleSubmit(submit)}>

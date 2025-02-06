@@ -1,19 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshThunk } from './redux/auth/operations';
 import { useEffect } from 'react';
+
+import Header from './components/Header/Header';
+import Login from './components/Login/Login.jsx';
+import Loader from './components/Loader/Loader';
+import Register from './components/Register/Register.jsx';
+import { NotFound } from './pages/NotFound/NotFound.jsx';
+import { Articles } from './pages/Articles/Articles.jsx'
 import HomePage from './pages/HomePage/HomePage';
+import { NewArticle } from './pages/NewArticle/NewArticle.jsx'
+import { EditArticle } from './pages/EditArticle/EditArticle.jsx'
+
 import PublicRoute from './redux/routesConfig/PublicRoute.jsx';
 import PrivateRoute from './redux/routesConfig/PrivateRoute.jsx';
 import { selectIsRefresh } from './redux/selectors';
-import Loader from './components/Loader/Loader';
-import { Articles } from './pages/Articles/Articles.jsx'
-import Register from './components/Register/Register.jsx';
-import { NotFound } from './pages/NotFound/NotFound.jsx'
-import Login from './components/Login/Login.jsx';
-import { NewArticle } from './pages/NewArticle/NewArticle.jsx'
-import { EditArticle } from './pages/EditArticle/EditArticle.jsx'
 
 function App() {
   const dispatch = useDispatch()

@@ -16,6 +16,7 @@ import { EditArticle } from './pages/EditArticle/EditArticle.jsx'
 import PublicRoute from './redux/routesConfig/PublicRoute.jsx';
 import PrivateRoute from './redux/routesConfig/PrivateRoute.jsx';
 import { selectIsRefresh } from './redux/selectors';
+import SearchComponent from './components/SearchComponent/SearchComponent.jsx';
 
 function App() {
   const dispatch = useDispatch()
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/articles' element={<Articles />} />
+        <Route path='/search' element={<SearchComponent />} />
         <Route path='/register' element={
           <PublicRoute>
             <Register />

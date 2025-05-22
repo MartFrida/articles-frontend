@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectArticles, selectIsLoadingArticles, selectIsError } from '../../redux/selectors'
 import { fetchData } from '../../redux/articles/operations'
 import Loader from '../../components/Loader/Loader'
+import SearchComponent from '../../components/SearchComponent/SearchComponent'
 
 export const Articles = () => {
 	const isLoading = useSelector(selectIsLoadingArticles)
@@ -15,6 +16,7 @@ export const Articles = () => {
 	const articles = useSelector(selectArticles)
 	return (
 		<div className='w-full bg-hero-pattern bg-contain bg-repeat py-16 px-4 relative'>
+			<SearchComponent />
 			<ul >
 				{articles?.map(article => (
 					<li key={article._id}>
